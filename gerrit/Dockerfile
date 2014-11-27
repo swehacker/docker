@@ -1,6 +1,3 @@
-# gerrit
-# VERSION               0.0.1
-
 FROM  ubuntu:14.10
 MAINTAINER Patrik Falk <patrik@patrikfalk.com>
 ENV REFRESHED_AT 2014-11-26
@@ -10,13 +7,10 @@ ENV GERRIT_ROOT /home/gerrit/gerrit
 ENV GERRIT_USER gerrit
 ENV GERRIT_WAR /home/gerrit/gerrit.war
 
-RUN \
-  sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
-  apt-get update && \
-  DEBIAN_FRONTEND=noninteractive apt-get -y upgrade && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -y sudo vim-tiny git && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -y supervisor && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -y openjdk-7-jre-headless
+#RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list
+RUN apt-get -y update
+RUN apt-get -y upgrade
+RUN apt-get -y install sudo vim-tiny git supervisor openjdk-7-jre-headless
 
 RUN useradd -m $GERRIT_USER
 RUN mkdir -p $GERRIT_HOME
