@@ -1,0 +1,3 @@
+#!/bin/bash
+docker rmi swehacker/mongodb
+docker build -rm -t swehacker/mongodb .
