@@ -19,7 +19,7 @@ RUN chown ${GERRIT_USER}:${GERRIT_USER} $GERRIT_HOME
 RUN mkdir -p /var/log/supervisor
 
 ADD http://gerrit-releases.storage.googleapis.com/gerrit-2.9.1.war $GERRIT_WAR
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN chown -R ${GERRIT_USER}:${GERRIT_USER} $GERRIT_HOME
 
@@ -28,7 +28,7 @@ CMD ["/usr/bin/ls","/home/gerrit"]
 RUN java -jar $GERRIT_WAR init --batch -d $GERRIT_ROOT
 RUN chown -R ${GERRIT_USER}:${GERRIT_USER} $GERRIT_ROOT
 
-ADD gerrit.config /home/gerrit/gerrit/etc/gerrit.config
+ADD config/gerrit.config /home/gerrit/gerrit/etc/gerrit.config
 
 USER root
 EXPOSE 8080 29418
