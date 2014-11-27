@@ -1,0 +1,3 @@
+#!/bin/bash
+docker rmi swehacker/gerrit
+docker build -rm -t swehacker/gerrit .
