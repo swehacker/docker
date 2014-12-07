@@ -1,0 +1,3 @@
+#!/bin/bash
+docker rmi swehacker/logstash
+docker build -rm -t swehacker/logstash .
