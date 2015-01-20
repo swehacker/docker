@@ -18,11 +18,11 @@ ENV JENKINS_MIRROR http://mirrors.jenkins-ci.org
 RUN mkdir -p $JENKINS_HOME/plugins $JENKINS_WAR
 RUN curl -sf -o $JENKINS_WAR/jenkins.war -L $JENKINS_MIRROR/war-stable/latest/jenkins.war
 
-VOLUME $JENKINS_HOME
+VOLUME /var/jenkins
 
 EXPOSE 8080
 
 ADD start.sh /usr/local/bin/start
 RUN chmod +x /usr/local/bin/start
 
-ENTRYPOINT ["/usr/local/bin/run" ]
+CMD /usr/local/bin/start
